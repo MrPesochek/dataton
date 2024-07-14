@@ -1,3 +1,9 @@
+#Импорт библиотек
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 #определим, какая категория людей возрастов чаще всего откликается на рекламу
 
 df = merged_df.groupby("grouped_age")["clicks"].sum().reset_index()
