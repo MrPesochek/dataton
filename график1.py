@@ -1,3 +1,9 @@
+#Импорт библиотек
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 #Группировка по возрасту
 def group_age(age):
    for i in range(10, 76, 8):
