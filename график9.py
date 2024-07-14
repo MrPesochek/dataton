@@ -1,3 +1,9 @@
+#Импорт библиотек
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 grouped_date_order = [
     '05.11 - 05.18', '05.18 - 05.25', '05.25 - 06.01', '06.01 - 06.08', '06.08 - 06.15', 
     '06.15 - 06.22', '06.22 - 06.29', '06.29 - 07.06', '07.06 - 07.13'
