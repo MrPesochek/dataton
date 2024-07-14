@@ -1,3 +1,9 @@
+#Импорт библиотек
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 orderdata = orderdata.pivot_table(index="userId", columns='category', values="avg_bill", fill_value=0).reset_index()
 
 merge_df = pd.merge(left=userdata, right=orderdata, left_on="userid", right_on="userId")
