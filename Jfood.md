@@ -1,10 +1,10 @@
-# **Первичная обработка данных**
+![Pasted image 20240714124100](https://github.com/user-attachments/assets/be892696-609c-4d33-97cd-ead623b535d2)# **Первичная обработка данных**
 
-- [?] Удаление фальшивых данных с отрицательными значениями.
+- Удаление фальшивых данных с отрицательными значениями.
     
-- [?] Удаление дубликатов в тех таблицах, где они не нужны
+- Удаление дубликатов в тех таблицах, где они не нужны
     
-- [?] Очистка от пустых и неопределенных поле
+- Очистка от пустых и неопределенных поле
     
 
 ```Python
@@ -16,7 +16,7 @@ interactiondata = interactiondata.drop_duplicates(subset=['UserId'])
 userdata = userdata.drop_duplicates(subset=['userid'])**
 ```
 
-- [?] Форматирование данных
+- Форматирование данных
 
 ```Python
 interactiondata["last_order_dt"] = d.to_datetime(interactiondata["last_order_dt"], format="%Y-%m-%d") 
@@ -25,8 +25,8 @@ userdata["join_datetime"] = pd.to_datetime(userdata["join_datetime"], format="%Y
 
 # **Анализ целевой аудитории**
 
-![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfVDHFjcRY-BEaVZth58B-pZY7OVjK3Ci5Fnu4PIWnAQae5H62vnB6VXSRelnX_CeDbdxpvwtEdkung3NtgSUzqMc9snzPNiBIZUig1djtFd_yXYgARU-QXUBr79rPD43Sin_JWNt9LTZRV1kw8az_lCYw?key=obP1Jyt_9BrS8BQ0aTLj9w) 
-*`График 1`*[*тык](https://github.com/MrPesochek/dataton/blob/main/график1.py)
+![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfVDHFjcRY-BEaVZth58B-pZY7OVjK3Ci5Fnu4PIWnAQae5H62vnB6VXSRelnX_CeDbdxpvwtEdkung3NtgSUzqMc9snzPNiBIZUig1djtFd_yXYgARU-QXUBr79rPD43Sin_JWNt9LTZRV1kw8az_lCYw?key=obP1Jyt_9BrS8BQ0aTLj9w)
+*`График 1`* [тык](https://github.com/MrPesochek/dataton/blob/main/график1.py)
 
 Статистика дает понять, что больше всего покупок в нашем сервисе совершают люди в возрасте от 18 до 26 лет. Определив возраст целевой аудитории мы уже можем говорить об определенных показателях и дальнейших этапах анализа целевой аудитории. Некоторые базовые критерии (такие как пол, географическое распределение) учитываться не будут за неимением данных в датасете. 
 
@@ -34,7 +34,7 @@ userdata["join_datetime"] = pd.to_datetime(userdata["join_datetime"], format="%Y
 ### **Демографические критерии:**
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXe2vJbzX9057nZl5_UQxScalYPmr9XHcYEGn3OwnXlHPs8OscFEGHPFxMxMuLLah_tb-YSUn18lMOHhmUFj30cRr1oaKawRtvmOC2zneIRhxL78yOyATNFOjPjAgz9pbRoOG1FmmKJJvoT__UfDfwnN8rQW?key=obP1Jyt_9BrS8BQ0aTLj9w)
-*`График 2`*[*тык](https://github.com/MrPesochek/dataton/blob/main/график2.py)
+*`График 2`* [тык](https://github.com/MrPesochek/dataton/blob/main/график2.py)
 
 
 **Доход:** мы выяснили, что в основном наша целевая аудитория имеет доход от 60 до 85 тысяч, но также есть небольшая группа, имеющая доход свыше 150 тысяч рублей в месяц. Об этом говорит `График 2`
@@ -42,27 +42,27 @@ userdata["join_datetime"] = pd.to_datetime(userdata["join_datetime"], format="%Y
 
 ### **Психографические критерии:**
 
-![[Pasted image 20240714124100.png]]
+![Pasted image 20240714124100](https://github.com/user-attachments/assets/59bac78b-5ae3-4a44-94cd-5b556b17ea11)
 *`График 3`* 
 
 Социальная роль покупателей: Обучающиеся, студенты, выпускники университета
 
 Образ жизни: Люди в этом возрасте часто ведут активный образ жизни с плотным графиком, что может приводить к частым незапланированным заказам еды, особенно если нет времени на приготовление пищи. Также студенты и люди, которые только недавно выпустились часто прибегают к покупке акционных товаров, о чем говорит `График 3`. Исходя из этих данных мы можем предложить стратегию максимального количества акций. На большинство продукции постоянно должны быть акции. также можно дополнительно ввести **Рулетку скидок**. Каждые потраченные **X** рублей будет даваться возможность выиграть дополнительную скидку на определенные категории товаров или суперприз.
   
-Склонность к спонтанным покупкам: Импульсивность и стремление к новым впечатлениям характерны для этой возрастной группы, что делает их более склонными к внезапным решениям и спонтанным покупкам. Согласно данным исследования ВЦИОМ (Всероссийский центр изучения общественного мнения), **57%** процентов Россиян совершали спонтанные покупки, **79%** из них - люди в возрасте 18-24 лет. `Источник - `[*тык*](**[https://wciom.ru/analytical-reviews/analiticheskii-obzor/impulsivnye-pokupki?ysclid=lykneg5ojf141388206](https://wciom.ru/analytical-reviews/analiticheskii-obzor/impulsivnye-pokupki?ysclid=lykneg5ojf141388206)**)
+Склонность к спонтанным покупкам: Импульсивность и стремление к новым впечатлениям характерны для этой возрастной группы, что делает их более склонными к внезапным решениям и спонтанным покупкам. Согласно данным исследования ВЦИОМ (Всероссийский центр изучения общественного мнения), **57%** процентов Россиян совершали спонтанные покупки, **79%** из них - люди в возрасте 18-24 лет. `Источник - `[тык*](**[https://wciom.ru/analytical-reviews/analiticheskii-obzor/impulsivnye-pokupki?ysclid=lykneg5ojf141388206](https://wciom.ru/analytical-reviews/analiticheskii-obzor/impulsivnye-pokupki?ysclid=lykneg5ojf141388206)**)
 
 
 
 ### **Покупательские (поведенческие) характеристики:**
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXcgGgiLgZwH1NuYOO4FCR6EQvL6IxFev6eD9AGE311XXf4b77ltYvy_ROJbZDN8XvFFgrKprPia70bP1TF-If88Nqg1SikhqNOGbJYE2hwKT3m1FhYEk3A1tnuNT86yCbIuwN1elpPRHG4gq9A5IjFOqyw?key=obP1Jyt_9BrS8BQ0aTLj9w)
-*`График 4`* [*тык](https://github.com/MrPesochek/dataton/blob/main/график4.py)
+*`График 4`*  [тык](https://github.com/MrPesochek/dataton/blob/main/график4.py)
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXeOxNSEkC82nA-6kkJXyZEyGs996iTAkzT6UXQ6_BpCrqPe7OX7qidf43f7i3gI4aPQk6jqmIQ-RoGMe-JLK4Sv5G604lhFwNzayXhWUrcOkppJVmTn_FR6aygNaxuijlpA59DliQVNYGA7WCdZnJYjgUBV?key=obP1Jyt_9BrS8BQ0aTLj9w)
 *`График 5`* 
 
 **![](https://lh7-us.googleusercontent.com/docsz/AD_4nXe_d3SVcD8ftmU8oXFOcN1if0_CVJFHrOFdJyDOt32zlSiI96x0BhK_iWn7hh2oQM9Z4eLPGmQKNs_3B6QC6a2B0QFU156c6y_8bnwg7cb8g3j3vlaNDCP1OETYD8rdFEMIg0jWNV87gFnQEYQXNvH60fc?key=obP1Jyt_9BrS8BQ0aTLj9w)**
-*`График 6`* [*тык](https://github.com/MrPesochek/dataton/blob/main/график6.py)
+*`График 6`*  [тык](https://github.com/MrPesochek/dataton/blob/main/график6.py)
 
 **Средний чек:** Анализируем данные по `Графику 4` на основе ДСТ. По графику можно понять, что группа 18-26, являющаяся нашей целевой аудиторией, также занимает лидирующую позицию в таблице средних трат в категориях. Также исходя из `Графика 4` видно, что основную прибыль приносят фрукты, овощи, рыба и алкоголь. Эти категории товаров покупают все возрастные группы кроме детей и подростков. Делать акции на овощи смысла особо нет, так как они - скоропортящийся продукт, который покупают в фиксированном количестве по списку. Фрукты столь популярны из-за категории людей в возрасте 18-26 лет. Также проблема, что фрукты - сезонный продукт, так что мы не сможем рекламировать одни и те же фрукты круглый год, что значительно повышает стоимость и трудозатратность рекламы фруктов. Мы предлагаем провести рекламную компанию, направленную на алкоголь и рыбу. Например, можно делать скидки на закуски при покупке пива или скидки на овощи при покупке крепких напитков. Также можно делать скидки на белое вино при покупки красной или рыбы
 
@@ -74,23 +74,23 @@ userdata["join_datetime"] = pd.to_datetime(userdata["join_datetime"], format="%Y
 # **Существующие рекламные кампании**
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfesLKKxeGzFFODJdxwr3RQ3aUMSvUAa-HAZrBpHnHpoxeRzGos7va9j8lDnRoce-WXCJQ-gfsiA6_flL5MAUQTCqz63ip7U-TgukxVC-oAT6tFswOw48YoSifBbhMQBmxxYCYuwIfv2BzLWT7PcbvIH5tf?key=obP1Jyt_9BrS8BQ0aTLj9w)
-*`График 7`* [*тык](https://github.com/MrPesochek/dataton/blob/main/график7.py)
+*`График 7`*  [тык](https://github.com/MrPesochek/dataton/blob/main/график7.py)
 
 `График 7` отображает соотношение количества полезных действий разных рекламных кампании, соотнесенное с возрастом. На графике прослеживается, что более всего реклама эффективна для пользователей группы 10-18 и 18-26 лет, а маркетинговые кампании действуют на пользователей с примерно одинаковым успехов. Однако, группа 10-18 не является нашей целевой аудиторией и практически не приносит дохода, так как, несмотря на охваты их средний чек и количество покупок имеют самые низкие показатели среди всех групп. Мы предлагаем провести новые рекламные кампании - спонсировать концерты с аудиторией 18-26, например как сделал это недавно Blink. Также мы хотим закупить рекламу в барах и клубах как Absolute. Это поднимет продажи алкоголя и узнаваемость бренда среди 18-26 летних.
 
 # **Анализ жалоб**
 
-![[Pasted image 20240714140508.png]]
-*`График 8`* [*тык](https://github.com/MrPesochek/dataton/blob/main/график8.py)
+![Pasted image 20240714140508](https://github.com/user-attachments/assets/fdf6008a-83b1-4229-9315-ad71d3e608a8)
+*`График 8`*  [тык](https://github.com/MrPesochek/dataton/blob/main/график8.py)
 
-![[Pasted image 20240714140517.png]]
-*`График 9`* [*тык](https://github.com/MrPesochek/dataton/blob/main/график9.py)
+![Pasted image 20240714140517](https://github.com/user-attachments/assets/25b2b186-7b5b-4ba4-bc4e-98c9199b4057)
+*`График 9`*  [тык](https://github.com/MrPesochek/dataton/blob/main/график9.py)
 
 Сопоставляя `Графики 8 и 9` можем заметить, что несмотря на резкий всплеск жалоб 06.22-07.06, отношение жалоб к количеству последних заказов людей точно такое же. Это означает, что процент жалоб стабилен и не менялся с момента открытия
 
 # Расчет рекламной компании
 
-Мы позвонили в рекламное агенство [*тык*](https://posteffect.ru/) и узнали цены на рекламу в ночных клубах и барах и узнали, что реклама 20 секундного в одном клубе/баре стоит в районе 25000 рублей в месяц, охват одного района это 7-10 баров/клубов, а значит 175-250 тысяч рублей в месяц. Исходя из цен на баннеры, можно рассчитать, что стример с ~1000 онлайна за баннер, который будет висеть месяц возмет примерно 300 тысяч рублей. Также мы хотели взять рекламную интеграции у фуд блогеров (например, Обломофф), но не нашли цен в откртом доступе.
+Мы позвонили в рекламное агенство [тык*](https://posteffect.ru/) и узнали цены на рекламу в ночных клубах и барах и узнали, что реклама 20 секундного в одном клубе/баре стоит в районе 25000 рублей в месяц, охват одного района это 7-10 баров/клубов, а значит 175-250 тысяч рублей в месяц. Исходя из цен на баннеры, можно рассчитать, что стример с ~1000 онлайна за баннер, который будет висеть месяц возмет примерно 300 тысяч рублей. Также мы хотели взять рекламную интеграции у фуд блогеров (например, Обломофф), но не нашли цен в откртом доступе.
 
 С бюджетом на рекламу в миллион в месяц можно взять одного стримера, два квартала клубов и оставить 200 тысяч на фуд блогеров
 
